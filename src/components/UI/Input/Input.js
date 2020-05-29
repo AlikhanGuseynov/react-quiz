@@ -16,16 +16,20 @@ const Input = props => {
     cls.push(classes.invalid)
   }
 
+  // console.log('value - ', props.value );
+  // console.log('type - ', props.type );
+  
+
   return(
     <div className={cls.join(' ')}>
       <label htmlFor={htmlFor}>{props.label}</label>      
       <input 
-        type='text'
+        type={props.type}
         id={htmlFor}
         value={props.value}
         onChange={props.onChange}
       />
-
+      
       {
         isInvalid(props)
           ? <span>{props.errorMessage || "Insert true answer"}</span>

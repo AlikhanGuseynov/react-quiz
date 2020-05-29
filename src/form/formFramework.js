@@ -1,41 +1,35 @@
-export function createControl(config, validation){
-  return{
+export function createControl(config, validation) {
+  return {
     ...config,
     validation,
     valid: !validation,
     touched: false,
-    value: '',
+    value: ''
   }
 }
 
 export function validate(value, validation = null) {
-  if(!validation){
+  if (!validation) {
     return true
   }
 
-  let isValid = true;
-  if (validation.required){
+  let isValid = true
+
+  if (validation.required) {
     isValid = value.trim() !== '' && isValid
   }
 
-  return isValid;
+  return isValid
 }
 
-export function validateForm(formControls){
-  let isFormValid = true;
-  console.log(isFormValid, 0);
+export function validateForm(formControls) {
+  let isFormValid = true
 
-  for( let control in formControls){
-    if(formControls.hasOwnProperty(control)){
-      console.log(isFormValid, 1);
-      console.log("formControls[control].valid ", formControls[control].valid);
-      console.log("formControls[control] ", formControls[control]);
-
+  for (let control in formControls) {
+    if (formControls.hasOwnProperty(control)) {
       isFormValid = formControls[control].valid && isFormValid
     }
   }
 
-  console.log(isFormValid, 2);
-  
-  return isFormValid;
+  return isFormValid
 }
